@@ -1,6 +1,7 @@
 import {
   FlatList,
   Pressable,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
@@ -23,30 +24,25 @@ export default function App(): JSX.Element {
 
   const buttonPressed = (targetValue: Currency) => {
     if (!inputValue) {
-      console.log('no input value');
       return (
-        <Snackbar
-          message="Enter a value to convert"
-          actionText="Dismiss"
-          onActionPress={() => {
-            // Implement the action logic here.
-          }}
-          duration={6000} // Customize duration
-          position="bottom" // Change the position to 'top'/'bottom'
-          backgroundColor="#EA7773" // Customize background color
-          textColor="#000000" // Change text color
-          actionTextColor="#000000" // Customize action text color
-          containerStyle={{marginHorizontal: 12}} // Apply additional styling
-          messageStyle={{}} // Adjust message text styling
-          actionTextStyle={{}} // Customize action text styling
-        />
+        <>
+          <Snackbar
+            message="Enter a value to convert"
+            actionText="Dismiss"
+            onActionPress={() => {
+              // Implement the action logic here.
+            }}
+            duration={6000} // Customize duration
+            position="bottom" // Change the position to 'top'/'bottom'
+            backgroundColor="#EA7773" // Customize background color
+            textColor="#000000" // Change text color
+            actionTextColor="#000000" // Customize action text color
+            containerStyle={{marginHorizontal: 12}} // Apply additional styling
+            messageStyle={{}} // Adjust message text styling
+            actionTextStyle={{}} // Customize action text styling
+          />
+        </>
       );
-      //Below code causes error
-      //   return Snackbar.show({
-      //     text: 'Enter a value to convert',
-      //     backgroundColor: '#EA7773',
-      //     textColor: '#000000',
-      //   });
     }
     const inputAmount = parseFloat(inputValue);
     if (!isNaN(inputAmount)) {
