@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 
-export default function App() {
+export default function App(): JSX.Element {
   const [randomBg, setRandomBg] = useState('#ffffff');
   const [randomShCol, setRandomShCol] = useState('#000000');
 
