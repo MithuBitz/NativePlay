@@ -10,6 +10,7 @@ import {
 import React, {useState} from 'react';
 
 import Icons from './components/Icons';
+import Snackbar from 'react-native-snackbar';
 
 export default function App(): JSX.Element {
   //Create a state to hold the isCros, gameWinner, gameState
@@ -83,15 +84,22 @@ export default function App(): JSX.Element {
   const onChangeItem = (itemNumber: number) => {
     if (gameWinner) {
       //show a snackbar with the name of the winner
-      // TODO:
-      console.log('Have a winner');
+      return Snackbar.show({
+        text: gameWinner,
+        backgroundColor: '#000000',
+        textColor: '#FFFFFF',
+        duration: Snackbar.LENGTH_LONG,
+      });
     }
     if (gameState[itemNumber] === 'empty') {
       gameState[itemNumber] = isCross ? 'cross' : 'circle';
       setIsCross(!isCross);
     } else {
-      //Show a snackbar to show the user that the gameState place is occupied
-      console.log('Place is occupied');
+      return Snackbar.show({
+        text: 'Position is already filled',
+        backgroundColor: 'red',
+        textColor: '#FFF',
+      });
     }
 
     checkWinner();
